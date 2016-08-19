@@ -16,7 +16,8 @@ public class ConnectionFactory {
 	
 	public static Connection getConnection() throws SQLException {
 		return DriverManager
-				.getConnection("jdbc:mysql://localhost/ticket_project?user=root&password=1234");
+				.getConnection("jdbc:mysql://localhost/ticket_project?user=root&password=password");
 	}
 
 }
+	
