@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -86,16 +87,20 @@ public class ChooseActionGUI extends JFrame implements ActionListener {
 			setFieldsVisible(false);
 		}else if(e.getSource() == bSubmit){
 			
-			Integer idC=null,idI=null;
+			String idC=null;
+			String idI= null;
+			idC = tClientId.getText();
+			idI = tInternalId.getText();
 			
-				idC = Integer.parseInt(tClientId.getText());
-				idI = Integer.parseInt(tInternalId.getText());
+			Integer i = !idI.isEmpty() ? Integer.parseInt(idI):0;
 			
 			if(idC != null && idI != null){
-				TicketCtrl ctrl = new TicketCtrl(new Ticket(idC, idI, 
+				TicketCtrl ctrl = new TicketCtrl(new Ticket(idC, i, 
 						LocalDateTime.now(), TicketTypes.valueOf(type.getSelectedItem().toString())));
-				System.out.println("dnoesnc");
+				JOptionPane.showMessageDialog(null, "Task Inserted Successfully");
 				ctrl.insertNewTask();
+				clearFields();
+				setFieldsVisible(false);
 			}
 		}
 	}
@@ -118,5 +123,9 @@ public class ChooseActionGUI extends JFrame implements ActionListener {
 		tTime.setText(date.substring(0, date.length() - 7));
 		tTime.setEditable(false);
 	}
-
+	
+	public void clearFields(){
+		tClientId.setText("");
+		tInternalId.setText("");
+	}
 }

@@ -7,14 +7,14 @@ import com.workitemsctrl.cdsc.exceptions.NoTicketIdException;
 
 public class Ticket {
 
-	private Integer idAig;
+	private String idAig;
 	private Integer idRtc;
 	private LocalDateTime startTime;
 	private LocalDateTime endTime;
 	private Double totalhours;
 	private TicketTypes type;
 
-	public Ticket(Integer idAig, Integer idRtc,LocalDateTime startTime,
+	public Ticket(String idAig, Integer idRtc,LocalDateTime startTime,
 			TicketTypes type) {
 		if(idAig == null && idRtc == null){
 			try {
@@ -36,18 +36,18 @@ public class Ticket {
 		this.type = type;
 	}
 	
-	public Ticket(LocalDateTime startTime,Integer idAig,
+	public Ticket(LocalDateTime startTime,String idAig,
 			TicketTypes type) {
 		this.idAig = idAig;
 		this.startTime = startTime;
 		this.type = type;
 	}
 	
-	public Integer getIdAig() {
+	public String getIdAig() {
 		return idAig;
 	}
 
-	public void setIdAig(Integer aigNumber) {
+	public void setIdAig(String aigNumber) {
 		this.idAig = aigNumber;
 	}
 
